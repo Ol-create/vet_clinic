@@ -14,3 +14,20 @@ VALUES ('Charmander', '08-02-2020', -11, TRUE, 0),
        ('Boarmon', '07-06-2005', 20.4, TRUE, 7), 
        ('Blossom', '13-10-1998', 17, TRUE, 3), 
        ('Ditto', '14-05-2022', 22, TRUE, 4);
+
+/* Track data for backup */
+BEGIN TRANSACTION;
+/* Rename column species TO unspecified */
+ALTER TABLE animals RENAME COLUMN species TO unspecified;
+ROLLBACK TRANSACTION;
+       
+/* Start transaction; */
+BEGIN TRANSACTION;
+/* Update species record with digimon */
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+
+/* Update the remaining species record with pokemon */
+UPDATE animals SET species = 'pokemon' WHERE name NOT LIKE '%mon';
+
+/* Save transaction */
+COMMIT TRANSACTION;
