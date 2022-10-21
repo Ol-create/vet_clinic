@@ -6,3 +6,6 @@ CREATE TABLE animals (id SERIAL,
                       escape_attempts INT, 
                       neutered BOOLEAN, 
                       weight_kg NUMERIC);
+                     
+ /* Add a column species of type string */ 
+ALTER TABLE animals ADD COLUMN species VARCHAR(225);
